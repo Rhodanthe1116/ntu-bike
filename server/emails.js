@@ -22,7 +22,7 @@ async function init(userId) {
     // send mail with defined transport object
     let info = await transporter.sendMail({
       from: 'manonentu407@gmail.com', // sender address
-      to: `${userId}@ntu.edu.tw, z0916945857@gmail.com`, // list of receivers
+      to: `${userId}@ntu.edu.tw`, // list of receivers
       subject: "你的車違停了", // Subject line
       text: "你的車在今天違停了，請將車停好。", // plain text body
       html: `<b>同學你好，這裡是男一生治會，你的車在${now}違停了，請將車停好，謝謝你的配合。</b>` // html body

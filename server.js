@@ -20,13 +20,15 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+
 
 // Mount your existing apiRouter below at the '/api' path.
 const apiRouter = require('./server/api');
 app.use('/api', apiRouter);
+
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 // This conditional is here for testing purposes:
 if (!module.parent) { 
