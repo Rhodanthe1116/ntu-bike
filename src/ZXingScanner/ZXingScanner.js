@@ -4,18 +4,14 @@ import './ZXingScanner.css'
 
 const codeReader = new BrowserMultiFormatReader();
 
-const Camera = () => {
-  return (
-    <video id="video"></video>
-  )
-}
-
 class ZXingScanner extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      scanned: false
+      scanned: false,
+      torch: false,
     }
+    this.toggleTorch = this.toggleTorch.bind(this)
   }
   componentDidMount() {
     const hdConstraints = {
@@ -48,8 +44,27 @@ class ZXingScanner extends Component {
     codeReader.reset()
   }
 
+  toggleTorch() {
+    const video = document.querySelector('#video');
+    // get the active track of the stream
+    const track = video.srcObject.getVideoTracks()[0];
+    if (track.getCapabilities().torch) {
+      track.applyConstraints({
+        advanced: [{ torch: !this.state.torch }]
+      })
+      this.setState({ torch: !this.state.torch })
+    } else {
+      alert('不能用閃光燈')
+    }
+  }
+
   render() {
-    return <Camera />
+    return (
+      <>
+        <video id="video"></video>
+        <button onClick={this.toggleTorch}>閃光燈</button>
+      </>
+    )
   }
 }
 
