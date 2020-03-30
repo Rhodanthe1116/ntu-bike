@@ -58,7 +58,7 @@ class Business extends React.Component {
     }
 
     checkId(userId) {
-        const studentCardRegexp = /[A-Z]{1}[0-9]{8}/
+        const studentCardRegexp = /[A-Z]{1}[0-9]{8}/i
         if (userId.match(studentCardRegexp)) {
             return userId.match(studentCardRegexp)[0]
         }
