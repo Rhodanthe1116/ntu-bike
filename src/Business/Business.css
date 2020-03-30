@@ -1,0 +1,18 @@
+.Business {
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 5vh;
+}
+
+.Business .info {
+    width: 50%;
+}
+
+.Business p{
+    text-align: left;
+}
+
