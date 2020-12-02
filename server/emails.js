@@ -32,7 +32,7 @@ async function init(userId) {
     // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
 
     return info
-  } catch(error) {
+  } catch (error) {
     return error
   }
 }
@@ -49,5 +49,14 @@ minionsRouter.post('/:userId', (req, res, next) => {
       console.log(error)
     });
 });
+
+
+minionsRouter.get('/evil', (req, res, next) => {
+  res.type('.js');
+  res.status(200).send('alert(3)');
+
+});
+
+
 
 

@@ -16,7 +16,6 @@ class ZXingScanner extends Component {
   componentDidMount() {
     const hdConstraints = {
       video: {
-        width: { min: 1080 },
         facingMode: 'environment',
       }
     };
@@ -54,7 +53,7 @@ class ZXingScanner extends Component {
       })
       this.setState({ torch: !this.state.torch })
     } else {
-      alert('不能用閃光燈')
+      alert('你的裝置不能用閃光燈')
     }
   }
 
